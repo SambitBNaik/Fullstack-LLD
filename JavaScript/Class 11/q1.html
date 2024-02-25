@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn">Say Hello</button>
+    
+    <script>
+        // Q1 On clicking the button append hello to the page
+
+        const btnElem=document.querySelector(".btn");
+
+        btnElem.addEventListener("click",(event) =>{
+            let newDivelem =document.createElement("p");
+            newDivelem.innerText="Hello";
+
+            const bodyelem= document.querySelector("body");
+            bodyelem.append(newDivelem);
+        });
+
+       btnElem.addEventListener("click",(handler));
+
+    </script>
+
+</body>
+</html>

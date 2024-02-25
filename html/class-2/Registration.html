@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+</head>
+<body>
+    <h2>Registration Form</h2>
+    <!-- Name -->
+    <div>
+        <label for="username">Name</label>
+        <input type="text" placeholder="Enter Name" id="username">
+    </div>
+    <!-- Email -->
+    <div>
+        <label for="email">Email</label>
+        <input type="text" placeholder="Enter Email" id="email">
+    </div>
+    <!-- Password -->
+    <div>
+        <label for="paswd">Password</label>
+        <input type="password" placeholder="Enter Password" id="paswd" required>
+    </div>
+    <!-- Age -->
+    <div>
+        <label for="age">Age</label>
+        <input type="number" placeholder="Enter Age" id="age" min="18" max="60">
+    </div>
+    <!-- Gender -->
+    <div>
+        <label for="">Gender</label>
+        <div>
+            <label for="male"> Male</label>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="female"> Female</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="others">Others</label>
+            <input type="radio" id="others" name="gender" value="others">
+        </div>
+    </div>
+    <!-- DOB -->
+    <div>
+        <label for="dob">Date Of Birth</label>
+        <input type="date" placeholder="Enter DOB" id="dob" min="2023-11-10" max="2025-01-01">
+    </div>
+    <!-- Digree -->
+    <div>
+        <label>Select your degree</label>
+        <select>
+            <option>BTech</option>
+            <option>BSC</option>
+            <option>BA</option>
+            <option>MBA</option>
+            <option>MCA</option>
+        </select>
+    </div>
+    <!-- Address -->
+    <div>
+        <label for="add">Address</label>
+        <textarea placeholder="Entre User Address" id="add" rows="5" cols="33"></textarea>
+    </div>
+    <!-- Phone Number -->
+    <div>
+        <label for="phno">Phone Number</label>
+        <input  type="number" id="phno">
+    </div>
+    <!-- Photo -->
+    <div>
+        <label for="userprofilepic">Please upload Profile Picture</label>
+        <input  type="file" id="userprofilepic">
+    </div>
+    <!-- Submit -->
+    <button type="submit">Submit</button>
+
+</body>
+</html>

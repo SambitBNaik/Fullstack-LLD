@@ -1,0 +1,158 @@
+:root{
+  --background-color-dark:#4b4b4b;
+  --background-for-toolbox:#3d3d3d;
+  --blue:#002b5b;
+  --green:#245953;
+}
+
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Toolbox navbar css */
+.toolbox-cont{
+  background-color: var(--background-color-dark);
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;  
+}
+.toolbox-cont>*{
+  margin-left: 2rem;
+}
+.toolbox-priority-cont{
+  display: flex;
+  height: 2.5rem;
+  padding: 0.8rem;
+  width: 18rem;
+  background-color: var(--background-for-toolbox);
+  align-items: center;
+  justify-content: space-evenly; 
+  border-radius: 1rem;
+}
+
+.color{
+  height: 1.5rem;
+  width: 3rem;
+  border: 1px solid #245953;
+  border-radius: 1rem;
+  font-size: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: whitesmoke;
+}
+
+.color:hover{
+  background-color: #485460;
+}
+.lightpink{
+  background-color: lightpink;
+}
+.lightgreen{
+  background-color: lightgreen;
+}
+.lightblue{
+  background-color: lightblue;
+}
+.black{
+  background-color:black;
+}
+.action-btn-cont{
+  height: 3.5rem;
+  width: 8rem;
+  background-color: #3d3d3d;
+  display: flex;
+}
+.action-btn-cont>*{
+  display: flex;
+  width: 50%;
+  font-size: 2rem;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.action-btn-cont>*:hover{
+  background-color: green;
+}
+
+/* Ticket creation container */
+.modal-cont{
+  display: none;
+  height: 50vh;
+  width: 45vw;
+  position: absolute;
+  top: 30%;
+  left: 27%;
+  z-index: 5;
+}
+.textarea-cont{
+  resize: none;
+  border: none;
+  outline: none;
+  background-color: #dfe4ea;
+  height: 100%;
+  width: 75%;
+  font-size: 1.5rem;
+}
+.priority-color-cont{
+  height: 100%;
+  width: 25%;
+  background-color: var(--background-color-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.priority-color{
+  height: 2rem;
+  width: 90%; 
+  color: whitesmoke;
+  border: 1px solid #245953;
+  border-radius: 1rem;
+  font-size: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+/* Ticket */
+.main-ticket-cont{
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.ticket-cont{
+  height: 12rem;
+  width: 14rem;
+  background-color: coral;
+  position: relative;
+}
+
+.ticket-color{
+  height: 1rem;
+  /* background-color: black; */
+}
+
+.ticket-id{
+  height: 2rem;
+  background-color:yellow;
+}
+
+.lock{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.active-status-color{
+  border: 5px solid lightslategrey;
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            border: 0.2rem solid black;
+            border-radius: 1rem;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .star-container{
+            display: flex;
+            font-size: 3rem;
+            /* flex-direction: row; */
+            /* justify-content: space-between; */
+        }
+        .star{
+           cursor: pointer;
+           padding: 0.2rem;
+           color: gray;
+        }
+        .star:hover,.star-fill{
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Start Component</h1>
+        <div class="star-container">
+            <div class="star" data-index="1">&#9733</div>
+            <div class="star" data-index="2">&#9733</div>
+            <div class="star" data-index="3">&#9733</div>
+            <div class="star" data-index="4">&#9733</div>
+            <div class="star" data-index="5">&#9733</div>
+        </div>
+        <h2>Rating Count-><span  id="count">0</span></h2>
+    </div>
+</body>
+<Script>
+    const star= document.querySelectorAll(".star");
+    const count= document.querySelector("#count");
+    const starContainer= document.querySelector(".star-container");
+    const clickestars = Array.from({length : star.length}, () => false);
+
+
+    //Approach-1
+    // star.forEach((star) =>{
+    //     star.addEventListener("click",(event) =>{
+    //         const index=parseInt(star.getAttribute("data-index"));
+
+    //         for(let i=0;i<star.length;i++){
+    //             star[i].classList.remove("star-fill");
+    //         }
+    //         for(let i=0;i<index.length;i++){
+    //             star[i].classList.add("star-fill");
+    //         }
+    //         count.innerText=index;
+    //     })
+    // })
+
+
+    //Approach -2
+    starContainer.addEventListener("mouseover",(event)=>{
+        const index=parseInt(event.target.getAttribute("data-index"));
+
+        for(let i=0;i<star.length;i++){
+            if(!clickestars[i] && i<index){
+                star[i].classList.add("star-fill");
+            }
+            else{
+                star[i].classList.remove("star-fill");
+            }
+        }
+        count.innerText= index;
+    });
+    starContainer.addEventListener("mouseout",(event)=>{
+        const index=parseInt(event.target.getAttribute("data-index"));
+
+        for(let i=0;i<star.length;i++){
+            if(!clickestars[i]){
+                star[i].classList.remove("star-fill");
+            }
+        }
+        // count.innerText=index;
+    });
+
+    starContainer.addEventListener("click",(event) =>{
+        const index=parseInt(event.target.getAttribute("data-index"));
+
+        for(let i=0;i<star.length;i++){
+            clickestars[i]=i<index;
+
+            if(clickestars[i]){
+                star[i].classList.add("star-fill");
+            }
+            else{
+                star[i].classList.remove("star-fill");
+            }
+        }
+        count.innerText = index;
+    });
+
+</Script>
+</html>
