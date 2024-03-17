@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            display: flex;
+            align-items: center;
+            justify-items: center;
+            gap: 5px;
+            border: 5px solid lavender;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20%;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label for="search"> search</label>
+        <input type="text" placeholder="search here"/>
+    </div>
+</body>
+<script>
+    const MakeAnApiCall = (event) =>{
+        console.log("Making an api call....");
+        console.log(event.target.value);
+    };
+    const debounceFuncApiCall = (func, delay) =>{
+        setTimeout(func(),delay);
+    }
+    const input = document.querySelector("input");
+    input.addEventListener("keydown",debounceFuncApiCall(MakeAnApiCall,2000));
+</script>
+</html>

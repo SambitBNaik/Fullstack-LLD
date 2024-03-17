@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0.75rem;
+            border: 0.1rem solid black;
+            border-radius: 1rem;
+            height: 45vh;
+            gap: 0.75rem;
+        }
+        #number{
+            color:solid black;
+            font-size: 2.5rem;
+        }
+        #add{
+            background-color: lightgreen;
+            border-radius: 5px;
+            cursor: pointer;
+
+        }
+        #substract{
+            background-color: lightsalmon;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #Reset{
+            background-color: yellow;
+            border-radius: 5px;
+            /* font-size: 40px; */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Counter</h1>
+        <div id="number">0</div>
+        <div>Increment/Decrement by
+            <input type="number" id="Increment_decrement" value="1">
+        </div>
+        <div>
+            <button id="add">+</button>
+            <button id="substract">-</button>
+        </div>
+        <button  id="Reset">Reset</button>
+    </div>
+</body>
+<script>
+    const number= document.querySelector("#number");
+    const inc_dec=document.querySelector("#Increment_decrement");
+    const addnum= document.querySelector("#add");
+    const subnum= document.querySelector("#substract");
+    const reset=  document.querySelector("#Reset");
+
+    addnum.addEventListener("click",() =>{
+        const currentNumber= parseInt(number.innerText);
+        const val= parseInt(inc_dec.value);
+        number.innerText = currentNumber+val;
+    });
+
+    subnum.addEventListener("click", () =>{
+        const currentNumber= parseInt(number.innerText);
+        const val= parseInt(inc_dec.value);
+        number.innerText = currentNumber-val>0 ? currentNumber-val : 0; 
+    });
+
+    reset.addEventListener("click",()=>{
+        inc_dec.value=1;
+        number.innerText=0;
+    })
+    
+</script>
+</html>
