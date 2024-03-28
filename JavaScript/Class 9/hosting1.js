@@ -3,7 +3,7 @@
 // //can not access a before initialization
 
 /**
- * When  you declaere variabkle with  let and const
+ * When  you declaere variable with  let and const
  * so these variable  will not be accessible before initilization and
  * at this moment they will be in a temporal dead zone
  */

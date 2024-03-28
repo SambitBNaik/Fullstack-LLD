@@ -48,8 +48,8 @@ console.log(a);
 // //adding items into array
 a.splice(1,0,5,5,5);
 console.log(a);
-// //delete item from an index
-a.splice(1,3);
+// //delete item from an index ,
+a.splice(1,3); //it will delete from start index to end index
 console.log(a);
 // //replacing item  in an  array
 a.splice(0,2,12,13);
