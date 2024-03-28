@@ -1,5 +1,5 @@
 const getEmailFn= function(){
-    // console.log(this);
+     console.log(this);
     console.log(`${this.firstName} ${this.lastName}`);
 };
 
@@ -20,12 +20,12 @@ const getInfo = function(city, school, sport){
 
 
 const arr =["Hydrabad","City Montisorry School","Cricket"];
-getInfo.call(student, ...arr);
-getInfo.apply(student, arr);
+// getInfo.call(student, ...arr);
+// getInfo.apply(student, arr);
 
 
 
-// student.getEmail();
+ student.getEmailFn();
 
 const teacher ={
     firstName:"Rohit",
