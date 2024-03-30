@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+
+        }
+        .container{
+            height: 500px;
+            width: 500px;
+            background-color: black;
+            position: relative;
+          
+            
+        }
+        .box{
+            height: 100px;
+            width: 100px;
+            background-color: yellow;
+            position: absolute;
+            left:50%;
+            /* transform: translateX(-50%); */
+            top: 50%;
+            transform: translate(-50%,-50%);/*it will override the translate and only translate effect will be there*/
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box"></div>
+    </div>
+</body>
+</html>
