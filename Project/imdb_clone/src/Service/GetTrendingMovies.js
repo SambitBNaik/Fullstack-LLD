@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-export const GetTrendingMovies =async(pageNo)=>{
+export const GetTrendingMovies =async(pageNo=1)=>{
     const options = {
         method: 'GET',
         url: 'https://api.themoviedb.org/3/trending/movie/day',
-        params: {language: 'en-US' , page:pageNo | 1},
+        params: {language: 'en-US' , page:pageNo},
         headers: {
           accept: 'application/json',
           Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NzU4NzI1ZDBiMWZmNDgzMzVhMGM1NDUwZWI4Nzg3YSIsInN1YiI6IjY2MDZmMzViYTg5NGQ2MDE3YzYzOTZkOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Fh_dbFGad8rL9_TrO3QvyqPXmqv1z3JOXRdUDq3Z62Q'
@@ -12,6 +12,5 @@ export const GetTrendingMovies =async(pageNo)=>{
       };
       
       const response= await axios.request(options);
-      console.log(response);
       return response?.data?.results;
 };

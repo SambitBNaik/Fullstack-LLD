@@ -1,6 +1,7 @@
-import React from 'react'
+import React ,{memo}from 'react'
 
 const Pagination = ({onPrev, onNext, currPage}) => {
+  console.log("Pagination component");
   return (
     <div className='flex justify-center items-center gap-4'>
         <button onClick={onPrev} className='rounded-lg border-4 border-blue-800 m-4 p-2'>Previous</button>
@@ -10,4 +11,4 @@ const Pagination = ({onPrev, onNext, currPage}) => {
   )
 }
 
-export default Pagination
+export default memo(Pagination);
