@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
 
-export const GetTrendingMovies =async(pageNo=1)=>{
+export const GetTopRatedMovies=async(pageNo)=>{
     const options = {
         method: 'GET',
-        url: 'https://api.themoviedb.org/3/trending/movie/day',
+        url:'https://api.themoviedb.org/3/movie/top_rated',
         params: {language: 'en-US' , page:pageNo},
         headers: {
           accept: 'application/json',
@@ -14,4 +14,5 @@ export const GetTrendingMovies =async(pageNo=1)=>{
       const response= await axios.request(options);
       console.log(response);
       return response?.data?.results;
-};
+
+}
