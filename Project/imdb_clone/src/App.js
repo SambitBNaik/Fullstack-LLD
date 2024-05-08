@@ -14,6 +14,10 @@ import TopRatedMovies from './Components/Movies/TopRatedMovies';
 import TvShowsAiringToday from './Components/TvShows/TvShowsAiringToday';
 import TopRatedTvShows from './Components/TvShows/TopRatedTvShows';
 import Footer from './Components/Footer/Footer';
+import Home from "./Components/Home/Home";
+import HomeBanner from './Components/Home/HomeBanner';
+import TvShowsWatchList from './Components/TvShows/TvShowsWatchList';
+import TrendingMovies from './Components/Home/TrendingMovies';
 
 
 function App() {
@@ -30,6 +34,14 @@ function App() {
           </Fragment>
          }>
        </Route>
+       <Route 
+           path='/' 
+           element={
+            <Fragment>
+               <HomeBanner/>
+               <TrendingMovies/>
+            </Fragment>
+            }></Route>
        <Route path='/nowplaying' element={<NowPlayingMovies/>}></Route>
        <Route path='/upcoming' element={<UpcomingMovies/>}></Route>
        <Route path='/toprated' element={<TopRatedMovies/>}></Route>
@@ -39,6 +51,8 @@ function App() {
        <Route path='/Movies_WatchList' element={<WatchList/>}></Route>
        <Route path='/airingToday' element={<TvShowsAiringToday/>}></Route>
        <Route path="/tv_top_rated" element={<TopRatedTvShows/>}></Route>
+       <Route path="/TvShows_WatchList" element={<TvShowsWatchList/>}></Route>
+       {/* <Route path="/slider" element={<TrendingMovies/>}></Route> */}
       
        </Routes>
        <Footer/>

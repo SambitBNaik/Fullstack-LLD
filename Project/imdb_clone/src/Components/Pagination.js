@@ -1,5 +1,6 @@
 import React ,{memo}from 'react'
 
+
 const Pagination = ({onPrev, onNext, currPage}) => {
   console.log("Pagination component");
   return (

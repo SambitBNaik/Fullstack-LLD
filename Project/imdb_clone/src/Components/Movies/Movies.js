@@ -95,7 +95,7 @@ const Movies = () => {
                 return (
                   <div
                     key={movie?.id}
-                    className="w-[160px] h-[30vh] bg-center bg-cover rounded-xl m-4 hover:scale-110 duration-300 relative "
+                    className="w-[170px] h-[35vh] bg-center bg-cover rounded-xl m-4 hover:scale-110 duration-300 relative "
                     style={{
                       backgroundImage: `url(https://image.tmdb.org/t/p/original/t/p/w500/${movie?.poster_path})`,
                     }}
@@ -104,8 +104,9 @@ const Movies = () => {
                     <div className="absolute top-5 right-1 bg-gray-900 p-2 text-xl rounded-xl bg-opacity-55"
                     onClick={()=>setOpenModal(false)}
                     >
-                      {!isInWatchlist?(<button onClick={()=>{
-                        toogleWatchlist(movie)
+                      {!isInWatchlist?(<button onClick={(e)=>{
+                        e.stopPropagation();
+                        toogleWatchlist(movie);
                         }}
                         >
                         <BsBookmarksFill style={{color: '#e2e9e8',}}/>

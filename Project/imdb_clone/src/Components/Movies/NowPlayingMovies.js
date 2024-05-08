@@ -103,7 +103,7 @@ const NowPlayingMovies = () => {
                                         onClick={()=>handleOpenModal(nowplay)}
                                     >
                                         <div className="absolute top-5 right-1 bg-gray-900 p-2 text-xl rounded-xl bg-opacity-55">
-                                           {!isInWatchlist?( <button onClick={()=>{toogleWatchlist(nowplay)}}><BsBookmarksFill style={{ color: '#e2e9e8' }} /></button>) :
+                                           {!isInWatchlist?( <button onClick={(e)=>{e.stopPropagation(); toogleWatchlist(nowplay)}}><BsBookmarksFill style={{ color: '#e2e9e8' }} /></button>) :
                                              <button onClick={()=>{toogleWatchlist(nowplay)}}><BsBookmarksFill style={{ color: '#e9fa00' }} /></button>
                                            }
                                             

@@ -76,7 +76,7 @@ const Navbar = () => {
          {showMovieWatchListDropdown && (
            <div className='absolute w-[190px] top-full left-0 bg-white text-gray p-2 rounded z-10' onMouseEnter={()=>setShowMovieWatchListDropdown(true)}>
            <Link to="/Movies_WatchList" className='block py-1 px-2 hover:bg-slate-300'>Movies WatchList</Link>
-           <Link to="/Movies_WatchList" className='block py-1 px-2 hover:bg-slate-300'>Tv Shows WatchList</Link>
+           <Link to="/TvShows_WatchList" className='block py-1 px-2 hover:bg-slate-300'>Tv Shows WatchList</Link>
          </div>
          )}
         </div>
