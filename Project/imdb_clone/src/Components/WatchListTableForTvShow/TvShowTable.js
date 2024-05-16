@@ -208,11 +208,41 @@ const TvShowTable = () => {
 
   const currGenreHandler = useCallback((genre) => {
     setCurrGenre(genre);
-  }, []);
+    let filteredTvShow=[];
+    if(genre==="All Genre"){
+      filteredTvShow=favoriteTvShow;
+    }else{
+      filteredTvShow=favoriteTvShow.filter(
+        (tv)=>genreids[tv?.genre_ids[0]===genre]
+      );
+    }
+    setFilteredTvShow(filteredTvShow);
+  }, [favoriteTvShow]
+ );
 
   const inputHandler = useCallback((val) => {
     setSearchStr(val);
-  }, []);
+    if(val===""){
+      currGenreHandler(currGenre);
+    }
+    else{
+      setFilteredTvShow(
+        favoriteTvShow.filter((tv)=>
+          tv.name.toLowerCase().includes(val.toLowerCase())
+        )
+      );
+    }
+  }, [favoriteTvShow,currGenre,currGenreHandler]);
+
+  const sortHandler=useCallback((order)=>{
+    let sortedData=[];
+    if(order==='ascending'){
+      sortedData=filteredTvShow.sort((t1,t2)=>t1?.vote_average-t2?.vote_average);
+    }else{
+      sortedData=filteredTvShow.sort((t1,t2)=>t2?.vote_average-t1?.vote_average);
+    }
+    setFavoriteTvShows([...sortedData]);
+  },[filteredTvShow]);
 
   return (
     <>
@@ -256,12 +286,14 @@ const TvShowTable = () => {
                   <img
                     className='mr-1'
                     alt="ascending button"
+                    onClick={()=>sortHandler('ascending')}
                     src="https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-up-arrows-those-icons-lineal-those-icons-3.png"
                   />
                   Rating
                   <img
                     className='ml-1'
                     alt="descending button"
+                    onClick={()=>sortHandler('descending')}
                     src="https://img.icons8.com/external-those-icons-lineal-those-icons/24/000000/external-down-arrows-those-icons-lineal-those-icons-4.png"
                   />
                 </th>
