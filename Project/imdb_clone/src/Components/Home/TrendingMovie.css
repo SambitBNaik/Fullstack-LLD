@@ -28,3 +28,10 @@ h1{
     animation: animate 5s linear infinite;
 
 }
+.slick-custom-class .slick-dots {
+    bottom:1px !important;
+    li button:before{
+            color: white !important;
+    }
+     
+}
