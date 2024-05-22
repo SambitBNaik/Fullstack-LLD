@@ -5,7 +5,7 @@ const MoviesInfo = ({movie}) => {
 
     const {title,overview,poster_path,release_date, vote_average}=movie;
   return (
-    <div>
+    <div className=''>
         <img className='bg-white rounded-lg mb-4 h-[40vh]'
          src={`https://image.tmdb.org/t/p/original/${poster_path}`}
          alt={`${title} Poster`} 

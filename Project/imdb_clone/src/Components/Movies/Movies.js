@@ -11,8 +11,8 @@ const Movies = () => {
   const [page, setPage] = useState(1);
   const [loader, setLoader] = useState(true);
   const [watchList,setWatchList]= useState([]);
-  const [openModal, setOpenModal]=useState(false);
-  const[selectedMovie,setSelectedmovie]=useState(null);
+  const [openModal, setOpenModal]= useState(false);
+  const [selectedMovie,setSelectedmovie]= useState(null);
 
 
   useEffect(()=>{
@@ -131,7 +131,7 @@ const Movies = () => {
           />
            {openModal && selectedMovie && (
             <div className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-75 flex justify-center items-center h-screen">
-              <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-[30vw]">
+              <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-[65vw]">
                 <MoviesInfo movie={selectedMovie} />
                 <button
                   onClick={handleCloseModal}
