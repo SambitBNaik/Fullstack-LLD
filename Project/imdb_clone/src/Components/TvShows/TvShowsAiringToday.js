@@ -77,7 +77,7 @@ const TvShowsAiringToday = () => {
                 return(
                     <div
                     key={airShow?.id}
-                    className='w-[160px] h-[30vh] bg-center rounded-xl m-4  hover:scale-110 duration-300 relative'
+                    className='w-[160px] h-[30vh] bg-center rounded-xl m-4 bg-cover  hover:scale-110 duration-300 relative'
                     style={{
                         backgroundImage:`url(https://image.tmdb.org/t/p/original/t/p/w500/${airShow?.poster_path})`,
                     }}

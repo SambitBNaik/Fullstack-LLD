@@ -56,6 +56,7 @@ import { GetTopRatedMovies } from '../../Service/GetTopRatedMovies';
 import Pagination from '../Pagination';
 import { BsBookmarksFill } from "react-icons/bs";
 import MoviesInfo from './MoviesInfo'; // Import MoviesInfo component for modal display
+import { GetMovieTrailer } from '../../Service/GetTrailer';
 
 const TopRatedMovies = () => {
     const [ratedMovies, setRatedMovies] = useState([]);
@@ -63,6 +64,7 @@ const TopRatedMovies = () => {
     const [watchList, setWatchList] = useState([]);
     const [openModal, setOpenModal] = useState(false);
     const [selectedMovie, setSelectedMovie] = useState(null);
+    const [trailerUrl, setTrailerUrl]=useState("");
 
     useEffect(() => {
         const watchListFromLocalStorage = localStorage?.getItem("movieWatchList");
@@ -81,13 +83,21 @@ const TopRatedMovies = () => {
             });
     }, [page]);
 
+    const fetchTrailer=async(movieTitle)=>{
+        const url= await GetMovieTrailer(movieTitle);
+        console.log(url);
+        setTrailerUrl(url);
+    }
+
     const handleOpenModal = useCallback((movie) => {
         setSelectedMovie(movie);
+        fetchTrailer(movie.title || movie.name);
         setOpenModal(true);
     }, []);
 
     const handleCloseModal = useCallback(() => {
         setSelectedMovie(null);
+        setTrailerUrl("");
         setOpenModal(false);
     }, []);
 
@@ -165,14 +175,16 @@ const TopRatedMovies = () => {
             />
             {openModal && selectedMovie && (
                 <div className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-75 flex justify-center items-center h-screen">
-                    <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-[30vw]">
-                        <MoviesInfo movie={selectedMovie} />
-                        <button
+                    <div className="bg-black rounded-lg shadow-lg p-8 w-full max-w-[65vw]">
+                        <MoviesInfo movie={selectedMovie} trailerUrl={trailerUrl}/>
+                      <div className='flex justify-center'>
+                      <button
                             onClick={handleCloseModal}
                             className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                         >
                             Close
                         </button>
+                      </div>
                     </div>
                 </div>
             )}

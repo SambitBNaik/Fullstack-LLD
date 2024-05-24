@@ -4,6 +4,7 @@ import Pagination from "../Pagination";
 import "./Movies.css";
 import { BsBookmarksFill } from "react-icons/bs";
 import MoviesInfo from "./MoviesInfo";
+import axios from "axios";
 
 
 const Movies = () => {
@@ -13,6 +14,7 @@ const Movies = () => {
   const [watchList,setWatchList]= useState([]);
   const [openModal, setOpenModal]= useState(false);
   const [selectedMovie,setSelectedmovie]= useState(null);
+  const [trailerUrl,setTrailerUrl]=useState("");
 
 
   useEffect(()=>{
@@ -35,14 +37,32 @@ const Movies = () => {
       });
   }, [page]);
 
+  const fetchTrailer= async(MovieTitle)=>{
+    const apikey="AIzaSyBmwjHbHbG4Y25Irmz9QS3fdRjgLOHDRgw";
+    const query=`${MovieTitle} trailer`;
+    const url=`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&key=${apikey}&maxResults=1`;
+
+    try{
+      const response= await axios.get(url);
+      const videoId=response.data.items[0]?.id?.videoId;
+      setTrailerUrl(`https://www.youtube.com/embed/${videoId}`);
+    }
+    catch(error){
+      console.error('Error fetching trailer URL:', error);
+      setTrailerUrl("");
+    }
+  }
+
   const handleOpenModal=useCallback((movie)=>{
     console.log("Opening modal for:", movie); // Add this line
     setSelectedmovie(movie);
+    fetchTrailer(movie.title || movie.name);
     setOpenModal(true);
   },[])
 
   const handleCloseModal=useCallback(()=>{
     setSelectedmovie(null);
+    setTrailerUrl("");
     setOpenModal(false);
   },[])
 
@@ -130,15 +150,17 @@ const Movies = () => {
             currPage={page}
           />
            {openModal && selectedMovie && (
-            <div className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-75 flex justify-center items-center h-screen">
-              <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-[65vw]">
-                <MoviesInfo movie={selectedMovie} />
+            <div className="fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-75 flex justify-center items-center">
+              <div className="bg-black rounded-lg shadow-lg p-8 w-full max-w-[65vw]">
+                <MoviesInfo movie={selectedMovie} trailerUrl={trailerUrl}/>
+                <div className="flex justify-center">
                 <button
                   onClick={handleCloseModal}
-                  className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded item-center justify-center"
                 >
                   Close
                 </button>
+                </div>
               </div>
             </div>
           )}
