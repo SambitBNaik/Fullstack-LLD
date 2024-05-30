@@ -67,7 +67,7 @@ const TrendingMovies = () => {
         <div>
           <div
           key={movie?.id}
-          className="relative w-[170px] h-[35vh] bg-center bg-cover rounded-xl m-8"
+          className="relative w-[175px] h-[30vh] bg-center bg-cover rounded-xl m-8"
           style={{
             backgroundImage:` url(https://image.tmdb.org/t/p/original/t/p/w500/${movie?.poster_path})`,
           }}

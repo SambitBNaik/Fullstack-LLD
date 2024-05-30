@@ -2,13 +2,17 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { GetTvShowsTopRated } from '../../Service/TVshowsApiServices/GetTvShowsTopRated';
 import Pagination from '../Pagination';
 import { BsBookmarksFill } from "react-icons/bs";
-import PercentageCircle from '../PercentageCircle';
+import MoviesInfo from '../Movies/MoviesInfo';
+import { GetMovieTrailer } from '../../Service/GetTrailer';
 
 const TopRatedTvShows = () => {
     const[ratedTv, setRatedTv]=useState([]);
     const[page,setPage]=useState(1);
     const[loder, setloder]=useState(true);
     const[watchList,setWatchList]=useState([]);
+    const[selectedShow, setSeletedShow]=useState(null);
+    const[openModal, setOpenModal]=useState(false);
+    const[trailerUrl,settrailerUrl]=useState("");
 
 
     useEffect(()=>{
@@ -31,6 +35,27 @@ const TopRatedTvShows = () => {
           })
     },[page]);
 
+    useEffect(()=>{
+      const fetchTrailer=async()=>{
+        if(selectedShow){
+          const url= await GetMovieTrailer(selectedShow.title || selectedShow.name);
+          settrailerUrl(url);
+        }
+      }
+      fetchTrailer();
+    },[selectedShow]);
+
+
+    const handleOpenModal=useCallback((show)=>{
+      setSeletedShow(show);
+      settrailerUrl("");
+      setOpenModal(true);
+    },[]);
+
+    const handleCloseModal=useCallback(()=>{
+      setSeletedShow(null);
+      setOpenModal(false);
+    },[])
     const loadNextPage=()=>{
         setPage((prevPage)=>prevPage+1);
     }
@@ -81,6 +106,7 @@ const TopRatedTvShows = () => {
               style={{
                 backgroundImage: `url(https://image.tmdb.org/t/p/original/t/p/w500/${rateTv?.poster_path})`,
               }}
+              onClick={()=>handleOpenModal(rateTv)}
               >
               <div className="absolute top-5 right-1 bg-gray-900 p-2 text-xl rounded-xl bg-opacity-55">
               
@@ -107,6 +133,20 @@ const TopRatedTvShows = () => {
     </div>
     </>
       )}
+      {openModal && selectedShow &&(
+        <div className='fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-75  flex justify-center items-center h-screen'>
+          <div className='bg-black rounded-lg shadow-lg p-8 w-full max-w-[65vw]'>
+            <MoviesInfo movie={selectedShow} trailerUrl={trailerUrl} />
+            <div className='flex justify-center'>
+              <button 
+              onClick={handleCloseModal} 
+              className='mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
     
     
@@ -114,6 +154,4 @@ const TopRatedTvShows = () => {
 }
 
 export default TopRatedTvShows
-
-
 

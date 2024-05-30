@@ -18,6 +18,7 @@ import Home from "./Components/Home/Home";
 import HomeBanner from './Components/Home/HomeBanner';
 import TvShowsWatchList from './Components/TvShows/TvShowsWatchList';
 import TrendingMovies from './Components/Home/TrendingMovies';
+import SearchResults from './Components/SearchResults/SearchResults';
 
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
        <Route path='/airingToday' element={<TvShowsAiringToday/>}></Route>
        <Route path="/tv_top_rated" element={<TopRatedTvShows/>}></Route>
        <Route path="/TvShows_WatchList" element={<TvShowsWatchList/>}></Route>
+       <Route path="/search" element={<SearchResults/>}></Route>
        {/* <Route path="/slider" element={<TrendingMovies/>}></Route> */}
       
        </Routes>

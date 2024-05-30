@@ -3,7 +3,7 @@ import React from 'react'
 const MoviesInfo = ({movie,trailerUrl}) => {
     // const dummyTrailerUrl = "https://www.youtube.com/embed/aqa3YTtwvaU";
 
-    const {title,overview,poster_path,release_date, vote_average}=movie;
+    const {name,title,overview,poster_path,release_date, first_air_date,vote_average}=movie;
   return (
     // <div className=''>
     //     <img className='bg-white rounded-lg mb-4 h-[40vh]'
@@ -29,13 +29,13 @@ const MoviesInfo = ({movie,trailerUrl}) => {
     //     </div>
     // </div>
     <div>
-      <h2 className='text-2xl mb-8 font-bold text-center pt-4 text-blue-400'>{title}</h2>
+      <h2 className='text-2xl mb-8 font-bold text-center pt-4 text-blue-400'>{title || name}</h2>
       <div className='flex space-x-10'>
         <img className='bg-white rounded-xl mb-4 h-[25vh]'
         src={`https://image.tmdb.org/t/p/original/${poster_path}`}
         alt={`${title} Poster`}/>
          <div className="align-middle">
-           <p className='text-gray-400'><b>Release Date :</b> {release_date}</p>
+           <p className='text-gray-400'><b>Release Date :</b> {release_date || first_air_date}</p>
            <p className='text-gray-400'><b>Average Vote :</b> {vote_average}</p>
            <p className='text-gray-400'><b>Description  :</b> {overview}</p>
          </div>
@@ -43,7 +43,7 @@ const MoviesInfo = ({movie,trailerUrl}) => {
       <div>
         <h3 className='text-xl text-blue-400 text-center'>Trailer</h3>
         <iframe
-          title={title}
+          title={title || name}
           width="100%"
           height="450"
           src={trailerUrl}
