@@ -159,7 +159,7 @@ const UpcomingMovies = () => {
                                 return (
                                     <div
                                         key={movie?.id}
-                                        className="w-[170px] h-[35vh] bg-center bg-cover rounded-xl m-4 hover:scale-110 duration-300 relative "
+                                        className="w-[170px] h-[30vh] bg-center bg-cover rounded-xl m-4 hover:scale-110 duration-300 relative "
                                         style={{
                                             backgroundImage: `url(https://image.tmdb.org/t/p/original/t/p/w500/${movie?.poster_path})`,
                                         }}

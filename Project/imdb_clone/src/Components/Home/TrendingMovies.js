@@ -6,11 +6,17 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./TrendingMovie.css";
 import { BsBookmarksFill } from "react-icons/bs";
+import { GetMovieTrailer } from "../../Service/GetTrailer";
+import MoviesInfo from "../Movies/MoviesInfo";
 
 const TrendingMovies = () => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [watchList, setWatchList]= useState([]);
+  const [selectedMovie,setSelectedmovie]=useState(null);
+  const [openModal, setOpenModal]=useState(false);
+  const [trailerUrl, setTrailerUrl]= useState("");
+
 
   useEffect(()=>{
     const watchListFromLocalStorage= localStorage?.getItem("movieWatchList");
@@ -18,6 +24,27 @@ const TrendingMovies = () => {
       setWatchList(JSON.parse(watchListFromLocalStorage));
     }
   },[]);
+
+  useEffect(()=>{
+    const fetchTrailer=async()=>{
+      if(selectedMovie){
+        const url= await GetMovieTrailer(selectedMovie.title || selectedMovie.name);
+        setTrailerUrl(url);
+      }
+    }
+    fetchTrailer();
+  },[selectedMovie]);
+
+  const handleOpenModal=useCallback((movie)=>{
+    setSelectedmovie(movie);
+    setTrailerUrl("")
+    setOpenModal(true);
+  },[]);
+
+  const handleCloseModal=useCallback(()=>{
+    setSelectedmovie(null);
+    setOpenModal(false);
+  },[])
 
   const toogleWatchlist =useCallback((movie)=>{
     const isMovieInWatchlist = watchList.some((item)=> item.id===movie.id);
@@ -71,6 +98,7 @@ const TrendingMovies = () => {
           style={{
             backgroundImage:` url(https://image.tmdb.org/t/p/original/t/p/w500/${movie?.poster_path})`,
           }}
+          onClick={()=>handleOpenModal(movie)}
         >
           <div className="absolute top-1 right-1 bg-gray-900 p-2 text-xl rounded-xl bg-opacity-55">
           {!isInWatchlist?(<button onClick={(e)=>{
@@ -102,6 +130,20 @@ const TrendingMovies = () => {
         </div>
       ) : (
         <Slider className="slick-custom-class" {...settings}> {renderSlides()}</Slider>
+      )}
+      {openModal && selectedMovie &&(
+        <div className='fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-75  flex justify-center items-center h-screen'>
+          <div className='bg-black rounded-lg shadow-lg p-8 w-full max-w-[65vw]'>
+            <MoviesInfo movie={selectedMovie} trailerUrl={trailerUrl} />
+            <div className='flex justify-center'>
+              <button 
+              onClick={handleCloseModal} 
+              className='mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

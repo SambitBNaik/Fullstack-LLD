@@ -95,7 +95,7 @@ const Table = () => {
           <div className="loader"></div>
         </div>
       ) : (
-    <div className='border border-gray-300 shadow-md m-5 rounded-md '>
+    <div className=' border border-gray-300 shadow-md m-5 rounded-md '>
         <div className='my-6 flex flex-wrap space-x-2 justify-center'>
         {genre?.length>0 && genre.map((eachGenre,idx)=>{
             return (

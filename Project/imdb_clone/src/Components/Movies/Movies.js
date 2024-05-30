@@ -4,8 +4,7 @@ import Pagination from "../Pagination";
 import "./Movies.css";
 import { BsBookmarksFill } from "react-icons/bs";
 import MoviesInfo from "./MoviesInfo";
-import axios from "axios";
-
+import { GetMovieTrailer } from "../../Service/GetTrailer";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -36,33 +35,26 @@ const Movies = () => {
         setLoader(false);
       });
   }, [page]);
-
-  const fetchTrailer= async(MovieTitle)=>{
-    const apikey="AIzaSyBmwjHbHbG4Y25Irmz9QS3fdRjgLOHDRgw";
-    const query=`${MovieTitle} trailer`;
-    const url=`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&key=${apikey}&maxResults=1`;
-
-    try{
-      const response= await axios.get(url);
-      const videoId=response.data.items[0]?.id?.videoId;
-      setTrailerUrl(`https://www.youtube.com/embed/${videoId}`);
+  
+  useEffect(()=>{
+    const fetchTrailer=async()=>{
+      if(selectedMovie){
+        const url= await GetMovieTrailer(selectedMovie.title || selectedMovie.name);
+        setTrailerUrl(url);
+      }
     }
-    catch(error){
-      console.error('Error fetching trailer URL:', error);
-      setTrailerUrl("");
-    }
-  }
+    fetchTrailer();
+  },[selectedMovie]);
+ 
 
   const handleOpenModal=useCallback((movie)=>{
-    console.log("Opening modal for:", movie); // Add this line
     setSelectedmovie(movie);
-    fetchTrailer(movie.title || movie.name);
+    setTrailerUrl("");
     setOpenModal(true);
   },[])
 
   const handleCloseModal=useCallback(()=>{
     setSelectedmovie(null);
-    setTrailerUrl("");
     setOpenModal(false);
   },[])
 
@@ -115,7 +107,7 @@ const Movies = () => {
                 return (
                   <div
                     key={movie?.id}
-                    className="w-[170px] h-[35vh] bg-center bg-cover rounded-xl m-4 hover:scale-110 duration-300 relative "
+                    className="w-[170px] h-[30vh] bg-center bg-cover rounded-xl m-4 hover:scale-110 duration-300 relative "
                     style={{
                       backgroundImage: `url(https://image.tmdb.org/t/p/original/t/p/w500/${movie?.poster_path})`,
                     }}
@@ -172,5 +164,4 @@ const Movies = () => {
 };
 
 export default Movies;
-
 
