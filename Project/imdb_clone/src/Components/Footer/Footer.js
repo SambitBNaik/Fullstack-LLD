@@ -12,7 +12,7 @@ const Footer = () => {
           <ul>
             <li>About</li>
             <li>Contact US</li>
-            <li>Supporrt Forums</li>
+            <li>Support Forums</li>
           </ul>
         </div>
         <div className='text-white'>

@@ -77,7 +77,7 @@ const SearchResults = () => {
                   <div className='p-4'>
                     <div className='text-white text-xl font-semibold'>{item.title}</div>
                     <div className='text-gray-400'>{item.release_date}</div>
-                    <div className='text-gray-300 mt-2 line-clamp-3'>{item.overview}</div>
+                    <div className='text-gray-300 mt-2'>{item.overview}</div>
                   </div>
                 </div>
               ))}

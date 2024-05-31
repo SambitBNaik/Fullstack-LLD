@@ -74,9 +74,46 @@ const TrendingMovies = () => {
   }, [page]);
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     slidesToShow: 7,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 2000,
+    autoplaySpeed: 2000,
+    cssEase: "linear",
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: false
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
+  
+  const settings2 = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 2,
     slidesToScroll: 1,
     autoplay: true,
     speed: 2000,
@@ -121,8 +158,19 @@ const TrendingMovies = () => {
 
   };
 
+  console.log(window.innerWidth);
+
+  let res;
+  if(window.innerWidth>768){
+    res=settings;
+  }
+  else{
+    res=settings2;
+  }
   return (
-    <div className="bg-black">
+    <div
+    key={window.innerWidth} 
+    className="bg-black">
       <h1>Trending Movies Now</h1>
       {movies.length === 0 ? (
         <div className="flex justify-center items-center">
@@ -133,7 +181,7 @@ const TrendingMovies = () => {
       )}
       {openModal && selectedMovie &&(
         <div className='fixed inset-0 z-50 overflow-y-auto bg-black bg-opacity-75  flex justify-center items-center h-screen'>
-          <div className='bg-black rounded-lg shadow-lg p-8 w-full max-w-[65vw]'>
+          <div className='bg-black rounded-lg shadow-lg p-4 w-full max-w-[90%] md:max-w-[70%]'>
             <MoviesInfo movie={selectedMovie} trailerUrl={trailerUrl} />
             <div className='flex justify-center'>
               <button 
