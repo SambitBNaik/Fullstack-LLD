@@ -7,26 +7,32 @@ const Navbar = () => {
   const[showPeopleDropdown, setShowPeopleDropdown]= useState(false);
   const[showMovieWatchListDropdown,setShowMovieWatchListDropdown]=useState(false);
   const[tvshowsDropDown,setTvShowsDropDown]=useState(false);
+  const[navbarOpen,setNavbarOpen]=useState(false);
   return (
-  // <div className="flex space-x-8 items-center pl-3 py-4 border bg-gray-700">
-  //     <Link to="/"><img  src={logo} className="w-[60px] rounded-full"/></Link>
-    
-
-  //     <Link to="/"><h3 className="text-white font-sans-serif ">Movies</h3></Link>
-  //     <Link to="/tvshows"><h3 className="text-white">TVShows</h3></Link>
-  //     <Link to="/people"><h3 className="text-white">People</h3></Link>
-  //     <Link to="/watchlist"><h3 className="text-white">WatchList</h3></Link>
-  //     <div className="flex justify-center items-center">
-  //       <input type="text" placeholder="Search" className="px-2 py1 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"/>
-  //     </div>
-    
-  //   </div>
   <div className="flex justify-between items-center pl-3 py-4  bg-slate-800">
-      <div className="flex items-center">
+      <div className="flex items-center "x-data="{navbarOpen: false}">
         <Link to="/">
           <img src={logo} className="w-12 h-12 rounded-full" alt="Movie Logo"/>
         </Link>
-        {/* <Link to="/" className="text-white ml-4 font-bold">Movies</Link> */}
+        <button
+          class="inline-flex items-center justify-center w-10 h-10 ml-auto text-white border rounded-md outline-none  lg:hidden focus:outline-none"
+          onClick={()=>setNavbarOpen(!navbarOpen)}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
         <div className='relative ml-4'
              onMouseEnter={()=>setShowMoviesDropdown(true)}
              onMouseLeave={()=>setShowMoviesDropdown(false)}
@@ -41,7 +47,6 @@ const Navbar = () => {
             </div>
           )}
         </div>
-        {/* <Link to="/tvshows" className="text-white ml-4 font-bold">TV Shows</Link> */}
         <div className='relative ml-4'
               onMouseEnter={()=>setTvShowsDropDown(true)}
               onMouseLeave={()=>setTvShowsDropDown(false)}
@@ -55,7 +60,6 @@ const Navbar = () => {
               </div>
              )}
         </div>
-        {/* <Link to="/people" className="text-white ml-4 font-bold">People</Link> */}
         <div className='relative ml-4'
              onMouseEnter={()=>setShowPeopleDropdown(true)}
              onMouseLeave={()=>setShowPeopleDropdown(false)}
@@ -67,7 +71,6 @@ const Navbar = () => {
             </div>
           )}
         </div>
-        {/* <Link to="/watchlist" className="text-white ml-4 font-bold">WatchList</Link> */}
         <div className='relative ml-4'
              onMouseEnter={()=>setShowMovieWatchListDropdown(true)}
              onMouseLeave={()=>setShowMovieWatchListDropdown(false)}
@@ -85,3 +88,6 @@ const Navbar = () => {
   )
 }
 export default Navbar;
+
+
+

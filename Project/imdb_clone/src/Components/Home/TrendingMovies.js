@@ -75,6 +75,7 @@ const TrendingMovies = () => {
 
   const settings = {
     dots: false,
+    arrows:true,
     infinite: true,
     slidesToShow: 7,
     slidesToScroll: 1,
@@ -110,16 +111,6 @@ const TrendingMovies = () => {
     ]
   };
   
-  const settings2 = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    autoplay: true,
-    speed: 2000,
-    autoplaySpeed: 2000,
-    cssEase: "linear",
-  };
 
   const renderSlides = () => {
     if (!movies.length) return null;
@@ -158,15 +149,7 @@ const TrendingMovies = () => {
 
   };
 
-  console.log(window.innerWidth);
-
-  let res;
-  if(window.innerWidth>768){
-    res=settings;
-  }
-  else{
-    res=settings2;
-  }
+  
   return (
     <div
     key={window.innerWidth} 
