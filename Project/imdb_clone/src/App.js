@@ -23,6 +23,7 @@ import SearchResults from './Components/SearchResults/SearchResults';
 
 function App() {
   return (
+    <div className='App'>
     <BrowserRouter>
     <Navbar/>
     <Routes>
@@ -59,6 +60,7 @@ function App() {
        </Routes>
        <Footer/>
     </BrowserRouter>
+    </div>
     
   );
 }

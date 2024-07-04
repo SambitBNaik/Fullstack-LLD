@@ -92,6 +92,33 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+
+const BannerWrapper = styled.div`
+text-align:center;
+display:flex;
+width:100%;
+justify-content:center;
+flex-direction:column;
+>h2,h3{
+  font-size:2rem;
+
+}
+@media screen and (min-width: 600PX) {
+  display:block;
+  text-align:left;
+  >h2,h3{
+    font-size:3rem;
+  
+  }}
+`;
+
+const InputWrapper= styled.input`
+width:100%;
+@media screen and (min-width: 400PX) {
+  width:unset;
+} 
+`;
 
 const HomeBanner = () => {
   const [query, setQuery] = useState('');
@@ -147,13 +174,15 @@ const HomeBanner = () => {
       }}
     >
       <div className="flex-col absolute top-20">
+        <BannerWrapper>
         <h2 className="text-white text-5xl font-bold leading-none font-sans">Welcome.</h2>
         <h3 className="text-white text-3xl font-bold leading-none font-sans">
           Millions of movies, TV shows, and people to discover. Explore now.
         </h3>
+        </BannerWrapper>
         <div className="mt-4 relative">
           <form className="flex items-center justify-center" onSubmit={handleSearch}>
-            <input
+            <InputWrapper
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
