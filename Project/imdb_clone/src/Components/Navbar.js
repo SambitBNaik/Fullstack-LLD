@@ -32,6 +32,7 @@ const Navbar = () => {
   const[showPeopleDropdown, setShowPeopleDropdown]= useState(false);
   const[showMovieWatchListDropdown,setShowMovieWatchListDropdown]=useState(false);
   const[tvshowsDropDown,setTvShowsDropDown]=useState(false);
+  const[navbarOpen,setNavbarOpen]=useState(false);
   return (
     <>
 
