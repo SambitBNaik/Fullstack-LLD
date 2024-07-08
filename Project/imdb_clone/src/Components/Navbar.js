@@ -2,37 +2,18 @@ import React, { useState } from 'react';
 import logo from "../Assets/MovieLogo.png"
 import { Link } from 'react-router-dom';
 
+
 const Navbar = () => {
   const[showMoviesDropdown, setShowMoviesDropdown]= useState(false);
   const[showPeopleDropdown, setShowPeopleDropdown]= useState(false);
   const[showMovieWatchListDropdown,setShowMovieWatchListDropdown]=useState(false);
   const[tvshowsDropDown,setTvShowsDropDown]=useState(false);
-  const[navbarOpen,setNavbarOpen]=useState(false);
   return (
   <div className="flex justify-between items-center pl-3 py-4  bg-slate-800">
-      <div className="flex items-center "x-data="{navbarOpen: false}">
+      <div className="flex items-center ">
         <Link to="/">
           <img src={logo} className="w-12 h-12 rounded-full" alt="Movie Logo"/>
         </Link>
-        <button
-          class="inline-flex items-center justify-center w-10 h-10 ml-auto text-white border rounded-md outline-none  lg:hidden focus:outline-none"
-          onClick={()=>setNavbarOpen(!navbarOpen)}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-6 h-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
         <div className='relative ml-4'
              onMouseEnter={()=>setShowMoviesDropdown(true)}
              onMouseLeave={()=>setShowMoviesDropdown(false)}
@@ -84,6 +65,7 @@ const Navbar = () => {
          )}
         </div>
       </div>
+    
     </div>
   )
 }
