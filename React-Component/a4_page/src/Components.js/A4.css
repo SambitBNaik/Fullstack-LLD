@@ -1,0 +1,43 @@
+.a4-page {
+    width: 210mm;
+    height: 297mm;
+    padding: 20mm;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+  
+  h1, h2, h3, h4, h5 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    margin-bottom: 15px;
+    line-height: 1.5;
+  }
+  
+  pre {
+    background-color: #f4f4f4;
+    padding: 10px;
+    overflow-x: auto;
+  }
+  
+  code {
+    display: block;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  @media print {
+    .a4-page {
+      box-shadow: none;
+      margin: 0;
+      width: 100%;
+      height: auto;
+      page-break-after: always;
+    }
+  }
+  
