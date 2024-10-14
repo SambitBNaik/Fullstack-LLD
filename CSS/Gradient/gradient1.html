@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .gradient1{
+            /* Example */
+            /* background: linear-gradient(#e66465, #9198e5); */
+            /* background: linear-gradient(0.57turn,#3f87a6,#ebf8e1,#f69d3c);
+             */
+             /* background: linear-gradient(to left,#333,#333 50%, #eee 75%, #333 75%); */
+             /* background: linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
+            linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
+            linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%); */
+
+            height: 100vh;
+
+            /* A gradient tilted 45 degrees, starting blue and findishing red */
+            /* background: linear-gradient(45deg, blue, red); */
+
+            /* A gradient going from the bottom right to top left corner, starting blue and finishing red. */
+            /* background: linear-gradient(to left top, blue, red); */
+
+            /* Interpolation in rectangular color space */
+            /* background: linear-gradient(in oklab, blue, red); */
+
+            /* Interpolation in polar color space */
+            /* background: linear-gradient(in hsl, blue, red); */
+
+            /* Interpolation in polar color space with longer hue interpolation method */
+            /* background: linear-gradient(in hsl longer hue, black, grey); */
+
+            /* Color stop: A gradient going from the bottom to top,
+             starting blue, turning green at 40% of its length,
+             and finishing red */
+             /* background: linear-gradient(0deg, blue, green 40%, red); */
+
+             /* Color hint: A gradient going from the left to right,
+               starting red, getting to the midpoint color
+               10% of the way across the length of the gradient,
+               taking the rest of the 90% of the length to change to blue */
+               /* background: linear-gradient(.25turn, red,10%, blue); */
+               
+               
+             /* Multi-position color stop: A gradient tilted 45 degrees,
+                with a red bottom-left half and a blue top-right half,
+                with a hard line where the gradient changes from red to blue */
+
+                background: linear-gradient(45deg, rgb(134, 108, 226) 0 50%,blue 50% 100%);
+               
+        }       
+    </style>
+</head>
+<body>
+    <div class="gradient1">
+
+    </div>
+</body>
+</html>
