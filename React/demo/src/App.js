@@ -67,9 +67,9 @@ function App() {
       <h1 id="greeting1">Hello From React-1</h1> */}
     {/* </div> */}
     <Heading/>
-    {/* <Navbar/>
+    <Navbar/>
     <MainContainer/>
-    <Footer/> */}
+    <Footer/>
     {/* <Counter/>
     <Counter/>
     <Counter/> */}
