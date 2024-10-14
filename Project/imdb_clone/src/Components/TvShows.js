@@ -8,7 +8,7 @@ import MoviesInfo from './Movies/MoviesInfo';
 const TvShows = () => {
   const[tvShows,setTvshows]= useState([]);
   const[page,setPage]= useState(1);
-  const [loder,setloder]=useState(true);
+  const[loder,setloder]=useState(true);
   const[watchList,setWatchList]=useState([]);
   const[selectedShow, setSeletedShow]=useState(null);
   const[openModal, setOpenModal]=useState(false);
